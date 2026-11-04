@@ -1,0 +1,1252 @@
+/* =========================================================
+   Noor Jahan Memorial — responsive application styles
+   ========================================================= */
+
+:root {
+  --wine: #681629;
+  --wine-dark: #541020;
+  --wine-soft: #f6e9ec;
+  --page: #f7f3f0;
+  --surface: #ffffff;
+  --border: #eaded9;
+  --text: #292524;
+  --muted: #777178;
+  --danger: #bd3448;
+  --sidebar-width: 252px;
+  --sidebar-mini-width: 78px;
+  --shadow: 0 5px 18px rgba(50, 24, 28, 0.045);
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--page);
+}
+
+.main-area {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex: 0 0 var(--sidebar-width);
+  flex-direction: column;
+  width: var(--sidebar-width);
+  height: 100vh;
+  min-height: 100vh;
+  padding: 27px 16px 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #fff;
+  background: var(--wine);
+  transition: width 220ms ease, flex-basis 220ms ease, padding 220ms ease;
+  z-index: 30;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+  margin: 0 7px 38px;
+}
+
+.brand-mark {
+  display: grid;
+  flex: 0 0 39px;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 11px;
+  color: var(--wine);
+  background: #fff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.sidebar-title {
+  margin: 0;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.25px;
+}
+
+.sidebar-title span {
+  display: block;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sidebar-nav a,
+.disabled-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 45px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  color: rgba(255,255,255,.88);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.sidebar-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.11);
+}
+
+.sidebar-nav a.active {
+  color: var(--wine);
+  background: #f8edef;
+  font-weight: 700;
+}
+
+.nav-icon {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 7px;
+  color: inherit;
+  background: rgba(255,255,255,.12);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar-nav a.active .nav-icon {
+  background: #f0dce1;
+}
+
+.nav-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.nav-label small {
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: #f8dfe5;
+  background: rgba(255,255,255,.12);
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  margin: auto 8px 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.58);
+  font-size: 11px;
+}
+
+/* Desktop collapsed sidebar */
+.sidebar-collapsed .sidebar {
+  flex-basis: var(--sidebar-mini-width);
+  width: var(--sidebar-mini-width);
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.sidebar-collapsed .sidebar-brand {
+  justify-content: center;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.sidebar-collapsed .sidebar-title,
+.sidebar-collapsed .nav-label,
+.sidebar-collapsed .sidebar-footer {
+  display: none;
+}
+
+.sidebar-collapsed .sidebar-nav a,
+.sidebar-collapsed .disabled-link {
+  justify-content: center;
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+.sidebar-collapsed .nav-icon {
+  flex-basis: 34px;
+  width: 34px;
+  height: 34px;
+}
+
+/* Topbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 76px;
+  padding: 13px 30px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,.97);
+}
+
+.menu-toggle {
+  display: flex;
+  flex: 0 0 38px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.menu-toggle:hover {
+  background: var(--wine-soft);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 19px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--wine);
+}
+
+.topbar-search {
+  flex: 1;
+  min-width: 0;
+  max-width: 390px;
+}
+
+.search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+  color: var(--text);
+  background: #faf7f5;
+  font-size: 13px;
+}
+
+.search-input:focus {
+  border-color: #a86c7b;
+  box-shadow: 0 0 0 3px rgba(104,22,41,.08);
+}
+
+.topbar-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.receptionist-label {
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-weight: 700;
+}
+
+/* Main content */
+.page-content {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 28px 32px 36px;
+}
+
+/* Registration */
+.registration-page {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.registration-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(270px, .9fr);
+  gap: 24px;
+  align-items: start;
+  min-width: 0;
+}
+
+.register-card,
+.token-slip-card,
+.recent-patients-card,
+.stat-card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.register-card {
+  padding: 24px;
+}
+
+.register-heading {
+  margin-bottom: 22px;
+}
+
+.register-heading h2 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.25px;
+}
+
+.register-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field label {
+  color: #40383b;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.form-field label span {
+  color: var(--wine);
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-width: 0;
+  height: 43px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  color: var(--text);
+  background: #fff;
+  font-size: 13px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #a86c7b;
+  box-shadow: 0 0 0 3px rgba(104,22,41,.08);
+}
+
+.form-field input::placeholder {
+  color: #aaa0a3;
+}
+
+.form-field small {
+  color: var(--danger);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  align-items: start;
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.gender-buttons button {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 43px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #40383b;
+  background: #fff;
+  font-size: 13px;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.gender-buttons button:hover {
+  border-color: #b77d8b;
+}
+
+.gender-buttons button.selected {
+  border-color: var(--wine);
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-weight: 700;
+}
+
+.register-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 3px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--wine);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.register-button:hover {
+  background: var(--wine-dark);
+}
+
+.register-button:active {
+  transform: translateY(1px);
+}
+
+/* Token slip */
+.token-slip-card {
+  width: 100%;
+  max-width: 360px;
+  justify-self: center;
+  padding: 22px;
+}
+
+.token-slip-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.token-slip-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.print-button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--wine);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.print-button:hover {
+  background: var(--wine-dark);
+}
+
+.print-button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.token-slip {
+  padding: 19px 17px;
+  border: 1px dashed #d6b9c0;
+  text-align: center;
+  background: #fff;
+}
+
+.token-slip h3 {
+  margin: 0 0 5px;
+  color: var(--wine);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.slip-subtitle {
+  margin: 0 0 17px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.slip-token-number {
+  margin-bottom: 16px;
+  padding: 11px 8px;
+  border-radius: 7px;
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-size: clamp(25px, 3vw, 30px);
+  font-weight: 800;
+  letter-spacing: .5px;
+  overflow-wrap: anywhere;
+}
+
+.slip-details {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+.slip-details p {
+  margin: 0 0 9px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.slip-details p:last-child {
+  margin-bottom: 0;
+}
+
+.slip-footer {
+  margin: 12px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.no-token {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Dashboard */
+.dashboard-heading {
+  margin-bottom: 24px;
+}
+
+.dashboard-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 7px;
+}
+
+.dashboard-header-row h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 26px;
+  letter-spacing: -.4px;
+}
+
+.dashboard-heading > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.demo-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 6px;
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.reset-demo-button {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--wine);
+  border-radius: 7px;
+  color: var(--wine);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.reset-demo-button:hover {
+  background: var(--wine-soft);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  padding: 20px;
+}
+
+.stat-card-title {
+  margin: 0 0 13px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.stat-card-value {
+  margin: 0;
+  color: var(--wine);
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+}
+
+/* Patient table */
+.recent-patients-card {
+  padding: 21px;
+}
+
+.table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.table-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.table-heading span {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border-radius: 6px;
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-size: 11px;
+}
+
+.table-wrapper {
+  width: 100%;
+  max-height: 360px;
+  overflow: auto;
+  border-radius: 7px;
+  scrollbar-width: thin;
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.patients-table th {
+  position: sticky;
+  top: 0;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  background: #faf7f5;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.patients-table td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #f1eae6;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.patients-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.patients-table tbody tr:hover {
+  background: #fcf9f8;
+}
+
+.patient-token {
+  color: var(--wine) !important;
+  font-weight: 700;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 7px 9px;
+  border-radius: 6px;
+  color: var(--wine);
+  background: var(--wine-soft);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.empty-table {
+  padding: 30px 10px !important;
+  color: var(--muted) !important;
+  text-align: center;
+}
+
+/* Mobile drawer backdrop */
+.sidebar-backdrop {
+  display: none;
+}
+
+/* Medium screens */
+@media (max-width: 1100px) {
+  .page-content {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .registration-workspace {
+    grid-template-columns: minmax(0, 1.35fr) minmax(250px, .9fr);
+    gap: 18px;
+  }
+}
+
+/* Tablet and mobile: sidebar becomes a drawer */
+@media (max-width: 768px) {
+  .app-layout {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(290px, 84vw);
+    height: 100dvh;
+    min-height: 0;
+    padding: 23px 16px 18px;
+    transform: translateX(-105%);
+    transition: transform 220ms ease;
+    box-shadow: 12px 0 30px rgba(30, 10, 15, .18);
+    z-index: 60;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-brand {
+    margin-bottom: 30px;
+  }
+
+  .sidebar-title,
+  .nav-label,
+  .sidebar-footer {
+    display: flex;
+  }
+
+  .sidebar-title {
+    display: block;
+  }
+
+  .sidebar-nav a,
+  .disabled-link {
+    justify-content: flex-start;
+    min-height: 47px;
+    padding: 11px 12px;
+  }
+
+  .sidebar-collapsed .sidebar {
+    width: min(290px, 84vw);
+    flex-basis: auto;
+    padding: 23px 16px 18px;
+  }
+
+  .sidebar-collapsed .sidebar-title,
+  .sidebar-collapsed .nav-label,
+  .sidebar-collapsed .sidebar-footer {
+    display: block;
+  }
+
+  .sidebar-collapsed .sidebar-brand {
+    justify-content: flex-start;
+    margin-right: 7px;
+    margin-left: 7px;
+  }
+
+  .sidebar-collapsed .sidebar-nav a,
+  .sidebar-collapsed .disabled-link {
+    justify-content: flex-start;
+    padding: 11px 12px;
+  }
+
+  .sidebar-collapsed .nav-icon {
+    flex-basis: 25px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgba(27, 13, 17, .42);
+    z-index: 50;
+  }
+
+  .topbar {
+    min-height: 68px;
+    gap: 13px;
+    padding: 11px 18px;
+  }
+
+  .topbar-search {
+    max-width: none;
+  }
+
+  .topbar-info {
+    gap: 10px;
+  }
+
+  .topbar-date {
+    display: none;
+  }
+
+  .page-content {
+    padding: 22px 18px 30px;
+  }
+
+  .registration-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .token-slip-card {
+    max-width: 440px;
+    justify-self: stretch;
+  }
+
+  .token-slip {
+    max-width: 100%;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 520px) {
+  .topbar {
+    flex-wrap: nowrap;
+    gap: 9px;
+    padding: 10px 12px;
+  }
+
+  .menu-toggle {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .topbar-info {
+    margin-left: 0;
+  }
+
+  .receptionist-label {
+    padding: 8px 9px;
+    font-size: 11px;
+  }
+
+  .search-input {
+    height: 39px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  .page-content {
+    padding: 16px 12px 24px;
+  }
+
+  .register-card,
+  .token-slip-card,
+  .recent-patients-card {
+    padding: 17px;
+    border-radius: 10px;
+  }
+
+  .register-heading {
+    margin-bottom: 18px;
+  }
+
+  .register-heading h2 {
+    font-size: 18px;
+  }
+
+  .register-form {
+    gap: 15px;
+  }
+
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .form-field input,
+  .gender-buttons button {
+    height: 44px;
+  }
+
+  .token-slip-card {
+    max-width: none;
+  }
+
+  .token-slip {
+    padding: 17px 14px;
+  }
+
+  .dashboard-header-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-header-row h1 {
+    font-size: 23px;
+  }
+
+  .dashboard-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card-title {
+    min-height: 34px;
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  .stat-card-value {
+    font-size: 19px;
+  }
+
+  .recent-patients-card {
+    padding: 15px 12px;
+  }
+
+  .table-heading h2 {
+    font-size: 15px;
+  }
+
+  .table-wrapper {
+    max-height: 320px;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 11px 9px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .topbar {
+    gap: 6px;
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .receptionist-label {
+    padding: 7px;
+    font-size: 10px;
+  }
+
+  .register-card,
+  .token-slip-card {
+    padding: 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Print only the token slip */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 2mm;
+  }
+
+  html,
+  body,
+  #root,
+  .app-layout,
+  .main-area,
+  .page-content,
+  .registration-page {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .sidebar,
+  .sidebar-backdrop,
+  .topbar,
+  .register-card,
+  .registration-patients,
+  .token-slip-heading,
+  .print-button,
+  .no-token {
+    display: none !important;
+  }
+
+  .registration-workspace {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .token-slip-card {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .token-slip {
+    display: block !important;
+    width: 100% !important;
+    padding: 2mm !important;
+    border: 1px dashed #999 !important;
+    color: #000 !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+    break-inside: avoid;
+  }
+
+  .token-slip h3 {
+    font-size: 17px !important;
+  }
+
+  .slip-subtitle {
+    font-size: 11px !important;
+  }
+
+  .slip-token-number {
+    font-size: 32px !important;
+    padding: 8px !important;
+    color: #000 !important;
+    background: #f2f2f2 !important;
+  }
+
+  .slip-details p {
+    margin-bottom: 6px !important;
+    color: #000 !important;
+    font-size: 11px !important;
+  }
+
+  .slip-footer {
+    color: #333 !important;
+    font-size: 10px !important;
+  }
+}
+
+/* =========================================================
+   Responsive safety fixes
+   These rules preserve the existing visual design and
+   component styling while preventing page-level overflow.
+   ========================================================= */
+
+@media screen {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .app-layout {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .main-area {
+    flex: 1 1 0%;
+    width: 0;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .page-content {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1600px;
+    min-width: 0;
+  }
+
+  .registration-page,
+  .registration-workspace,
+  .registration-patients,
+  .register-card,
+  .token-slip-card,
+  .recent-patients-card {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .registration-workspace {
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, .9fr);
+  }
+
+  .registration-workspace > * {
+    min-width: 0;
+  }
+
+  .form-row,
+  .form-field,
+  .gender-buttons {
+    min-width: 0;
+  }
+
+  .form-field input,
+  .form-field select,
+  .register-button,
+  .token-slip {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Keep the form and token slip comfortably sized on
+     narrower laptop/tablet widths while retaining desktop layout. */
+  @media (min-width: 769px) and (max-width: 900px) {
+    .registration-workspace {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .token-slip-card {
+      width: 100%;
+      max-width: 440px;
+      justify-self: stretch;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .app-layout {
+      display: block;
+    }
+
+    .main-area {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .page-content {
+      width: 100%;
+      padding-right: 18px;
+      padding-left: 18px;
+    }
+
+    .registration-workspace {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .page-content {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+
+    .registration-workspace {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .form-row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .register-card,
+    .token-slip-card {
+      width: 100%;
+    }
+
+    .gender-buttons button {
+      flex: 1 1 0;
+    }
+  }
+}
+
