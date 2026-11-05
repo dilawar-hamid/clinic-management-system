@@ -1249,4 +1249,79 @@
     }
   }
 }
+/* History Page */
+.history-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
 
+.history-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.history-date-filter label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.history-date-filter input {
+  min-height: 40px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  color: var(--text);
+  background: #fff;
+  font-size: 13px;
+}
+
+.history-date-filter input:focus {
+  border-color: #a86c7b;
+  box-shadow: 0 0 0 3px rgba(104, 22, 41, .08);
+}
+
+.history-page > h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.history-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.history-patient-records {
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .history-date-filter {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    padding: 15px;
+  }
+
+  .history-date-filter input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .history-stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+}
