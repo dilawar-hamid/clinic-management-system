@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { PatientContext } from "../context/PatientContext.js";
 import { CLINIC_NAME, SHOW_FEE_ON_SLIP } from "../config";
+import { isToday } from "../utils/date";
 
 function TokenSlip() {
   const { patients } = useContext(PatientContext);
-  const patient = patients[0];
+  const patient = patients.find((item) => isToday(item.createdAt));
 
   return (
     <div className="token-slip-card">

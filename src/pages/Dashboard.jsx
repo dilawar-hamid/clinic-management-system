@@ -17,8 +17,8 @@ function Dashboard() {
     0,
   );
 
-  const lastRegistered = patients[0]?.name || "—";
-
+  const lastRegistered = todayPatients[0]?.name || "—";
+  
   return (
     <div className="dashboard">
       <div className="dashboard-heading">

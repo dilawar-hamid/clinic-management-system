@@ -9,6 +9,7 @@ function RegisterForm() {
   const { addPatient, patients } = useContext(PatientContext);
   const nameInputRef = useRef(null);
 
+  const isSubmittingRef = useRef(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -21,6 +22,8 @@ function RegisterForm() {
     validationSchema: PatientValidation,
 
     onSubmit: (values, { resetForm }) => {
+      if (isSubmittingRef.current) return;
+      isSubmittingRef.current = true;
       const todayPatients = patients.filter((patient) =>
         isToday(patient.createdAt),
       );
@@ -33,6 +36,9 @@ function RegisterForm() {
 
       const newPatient = {
         ...values,
+        name: values.name.trim(),
+        age: Number(values.age),
+        fee: Number(values.fee),
         id: Date.now(),
         token: "T-" + tokenNumber,
         createdAt: new Date().toISOString(),
@@ -40,7 +46,9 @@ function RegisterForm() {
       };
 
       addPatient(newPatient);
+
       resetForm();
+      isSubmittingRef.current = false;
       nameInputRef.current?.focus();
     },
   });
@@ -98,7 +106,11 @@ function RegisterForm() {
               Gender <span>*</span>
             </label>
 
-            <div className="gender-buttons" role="group" aria-label="Select gender">
+            <div
+              className="gender-buttons"
+              role="group"
+              aria-label="Select gender"
+            >
               <button
                 type="button"
                 aria-pressed={formik.values.gender === "Male"}

@@ -9,10 +9,16 @@ function RecentPatientsTable({ todayOnly = true }) {
     ? patients.filter((patient) => isToday(patient.createdAt))
     : patients;
 
+  const normalizedSearch = searchTerm.trim().toLowerCase();
+
   const filteredPatients = visiblePatients.filter(
     (patient) =>
-      patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      patient.token.toLowerCase().includes(searchTerm.toLowerCase()),
+      String(patient.name || "")
+        .toLowerCase()
+        .includes(normalizedSearch) ||
+      String(patient.token || "")
+        .toLowerCase()
+        .includes(normalizedSearch),
   );
 
   return (
