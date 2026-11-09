@@ -55,6 +55,7 @@ function RecentPatientsTable({ todayOnly = true, selectedDate = null }) {
               <th>Patient Name</th>
               <th>Age</th>
               <th>Gender</th>
+              <th>Doctor</th>
               <th>Time</th>
               <th>Fee</th>
               <th>Status</th>
@@ -68,6 +69,7 @@ function RecentPatientsTable({ todayOnly = true, selectedDate = null }) {
                 <td>{patient.name}</td>
                 <td>{patient.age}</td>
                 <td>{patient.gender}</td>
+                <td>{patient.doctor || "—"}</td>
                 <td>
                   {new Date(patient.createdAt).toLocaleTimeString("en-PK", {
                     hour: "2-digit",
@@ -83,7 +85,7 @@ function RecentPatientsTable({ todayOnly = true, selectedDate = null }) {
 
             {filteredPatients.length === 0 && (
               <tr>
-                <td colSpan="7" className="empty-table">
+                <td colSpan="8" className="empty-table">
                   No patients found
                 </td>
               </tr>

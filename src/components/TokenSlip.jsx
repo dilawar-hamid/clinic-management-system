@@ -40,6 +40,9 @@ function TokenSlip() {
             <p>
               <strong>Gender:</strong> {patient.gender}
             </p>
+            <p>
+              <strong>Doctor:</strong> {patient.doctor}
+            </p>
             {patient.phone && (
               <p>
                 <strong>Phone:</strong> {patient.phone}

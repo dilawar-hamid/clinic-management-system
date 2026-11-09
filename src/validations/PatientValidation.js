@@ -1,4 +1,3 @@
-
 import * as Yup from "yup";
 
 const PatientValidation = Yup.object({
@@ -22,6 +21,13 @@ const PatientValidation = Yup.object({
   gender: Yup.string()
     .oneOf(["Male", "Female"], "Please select a valid gender")
     .required("Please select gender"),
+
+  doctor: Yup.string()
+    .oneOf(
+      ["Ali", "Arshad", "Waleed", "Khizar"],
+      "Please select a valid doctor",
+    )
+    .required("Please select a doctor"),
 
   phone: Yup.string()
     .trim()

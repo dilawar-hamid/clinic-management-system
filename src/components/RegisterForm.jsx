@@ -15,6 +15,7 @@ function RegisterForm() {
       name: "",
       age: "",
       gender: "",
+      doctor: "",
       phone: "",
       fee: DEFAULT_FEE,
     },
@@ -78,6 +79,31 @@ function RegisterForm() {
           />
           {formik.touched.name && formik.errors.name && (
             <small>{formik.errors.name}</small>
+          )}
+        </div>
+
+        {/* Doctor Name */}
+        <div className="form-field">
+          <label htmlFor="doctor">
+            Doctor Name <span>*</span>
+          </label>
+
+          <select
+            id="doctor"
+            name="doctor"
+            value={formik.values.doctor}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <option value="">Select doctor</option>
+            <option value="Ali">Ali</option>
+            <option value="Arshad">Arshad</option>
+            <option value="Waleed">Waleed</option>
+            <option value="Khizar">Khizar</option>
+          </select>
+
+          {formik.touched.doctor && formik.errors.doctor && (
+            <small>{formik.errors.doctor}</small>
           )}
         </div>
 
